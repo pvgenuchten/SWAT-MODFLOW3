@@ -94,9 +94,10 @@
 	      end if
 
 	      if (dtp_flowrate(i,k)<0) then
-	         print *,"Error.. Could not estimate emergency spillway volume"
-               print *,"Please enter necessary data in *.pnd input file"
-               print *,"for subbasin : ",i
+	         print *,"Error.. Could not estimate emergency ",
+           &        "spillway volume"
+            print *,"Please enter necessary data in .pnd input file"
+            print *,"for subbasin : ",i
    !!            stop
 	      end if
          end do

@@ -32,7 +32,7 @@
 
 
         !Print out SWAT-MODFLOW variable averages (rtb avg) -----------------------------------------------------------
-        if(swatmf_out_avg) then
+        if(swatmf_out_avg.gt.0) then
         if(leapyr.eq.1) then
           days_in_month = month_days
         else
