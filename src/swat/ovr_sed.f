@@ -147,20 +147,23 @@
 	    rdepth_direct = 0.
 	  endif
 
-	!! total kinetic energy by rainfall (J/m^2)
-	  ke_total = 0.001 * (rdepth_direct * ke_direct + rdepth_leaf * 
-     &	  ke_leaf)
+!! total kinetic energy by rainfall (J/m^2)
+      ke_total = 0.001 * (rdepth_direct * ke_direct +
+     &  rdepth_leaf * ke_leaf)
 
-	!! total soil detachment by raindrop impact
-	  sedspl = erod_k * ke_total * exp(-eros_spl * hhqday(k) / 1000.) * 
-     &	  hru_km(j) ! tons
+!! total soil detachment by raindrop impact
+      sedspl = erod_k * ke_total *
+     &  exp(-eros_spl * hhqday(k)/1000.)+hru_km(j) ! tons
 
-	!! Impervious area of HRU
-	  if(urblu(j)>0) sedspl = sedspl * (1.- fimp(urblu(j)))
+!! Impervious area of HRU
+      if(urblu(j)>0) then
+         sedspl = sedspl * (1.- fimp(urblu(j)))
+      end if
 
-	!! maximum water depth that allows splash erosion
-	  if(hhqday(k)>=3.* rain_d50.or.hhqday(k)<=1.e-3) sedspl = 0.
-
+!! maximum water depth that allows splash erosion
+	  if(hhqday(k)>=3.* rain_d50.or.hhqday(k)<=1.e-3) then
+	     sedspl = 0.
+      end if
 
 	!! Overland flow erosion 
     !! cover and management factor used in usle equation (ysed.f)
