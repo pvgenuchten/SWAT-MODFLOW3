@@ -332,8 +332,7 @@
 	  else                                                                             !! Modified by Cibin to include DLAI>1
 		if (dlai(idp) > 1.) then
 		 if (phuacc(j) > dlai(idp)) then
-            laiday(j) = olai(j) * (1. - (phuacc(j) - dlai(idp)) /             &          !! Modified by Cibin to include DLAI>1
-     &                               (1.2 - dlai(idp)))								   !! Modified by Cibin to include DLAI>1
+            laiday(j) = olai(j) * (1. - (phuacc(j) - dlai(idp)) / (1.2 - dlai(idp)))	!! Modified by Cibin to include DLAI>1
 	     endif
 	    endif
 	    if (laiday(j) < 0.) laiday(j) = 0.											   !! Modified by Cibin to include DLAI>1
